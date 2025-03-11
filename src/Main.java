@@ -20,7 +20,7 @@ public class Main {
             System.out.println("Мы можете установить обычное приложение");
         }
 
-        System.out.println("Задание 3");
+        System.out.println(" Задание 3");
         int year = 2025;
         if (year > 1584 && ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0))) {
             System.out.println(year + " год является высокосным");
