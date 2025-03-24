@@ -1,46 +1,26 @@
+import java.time.LocalDate;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("Задание 1");
-        byte clientOS = 0; // 0-IOS, 1-android
-        if (clientOS == 0) {
-            System.out.println("Установите версию приложения для iOS по ссылке");
-        } else {
-            System.out.println("Установите версию приложения для Android по ссылке");
-        }
+        int year = 2025;
+        System.out.println(checkYears(year));
 
         System.out.println("Задание 2");
-        short clientDeviceYear = 2_016;
-        if (clientOS == 0 && clientDeviceYear < 2015) {
-            System.out.println("Установите облегченную версию приложения для iOS по ссылке");
-        } else if (clientOS == 1 && clientDeviceYear < 2015) {
-            System.out.println("Установите облегченную версию приложения для Android по ссылке");
-        } else {
-            System.out.println("Мы можете установить обычное приложение");
-        }
+        int osType = 1; // 0-IOS, 1-android
+        int clientDeviceYear = 2024;
+        suggestAppVersion(osType, clientDeviceYear);
 
         System.out.println("Задание 3");
-        int year = 2025;
-        if (year > 1584 && ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0))) {
-            System.out.println(year + " год является высокосным");
-        } else if (year > 1584) {
-            System.out.println(year + " год не является високосным");
+        int deliveryDistance = 95;
+        int deliveryDays = calculateDeliveryDays(deliveryDistance);
+        if (deliveryDays == -1) {
+            System.out.println("Доставка свыше 100 км невозможна.");
         } else {
-            System.out.println(" в это время ещё не задумывались о високосных годах");
+            System.out.println("Потребуется дней: " + deliveryDays);
         }
 
-        System.out.println("Задание 4");
-        int deliveryDistance = 1;
-        if (deliveryDistance >= 0 && deliveryDistance < 20) {
-            System.out.println("Потребуется одни сутки на доставку");
-        } else if (deliveryDistance >= 20 && deliveryDistance < 60) {
-            System.out.println("На доставку потребуется пара суток");
-        } else if (deliveryDistance >= 60 && deliveryDistance < 100) {
-            System.out.println(" На доставку нужно трое суток");
-        } else {
-            System.out.println("К сожалению мы к вам не доедем");
-        }
-
-        System.out.println("Задание 4");
+        System.out.println("Задание 5 старое"); // старое задание не удалял
         byte monthNumber = 13;
         switch (monthNumber) {
             case 12, 1, 2:
@@ -59,6 +39,39 @@ public class Main {
         if (monthNumber > 12) {
             System.out.println("Такого месяца не существует пока");
         }
-
     }
+
+    public static String checkYears(int year) {
+        if (year > 1584 && ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0))) {
+            return year + " год является високосным";
+        } else if (year > 1584) {
+            return year + " год не является високосным";
+        } else {
+            return "В это время ещё не задумывались о високосных годах";
+        }
+    }
+
+    public static void suggestAppVersion(int osType, int clientDeviceYear) {
+        int currentYear = LocalDate.now().getYear(); // Текущий год
+        if (osType == 0 && clientDeviceYear < currentYear) {
+            System.out.println("Установите облегченную версию приложения для iOS по ссылке");
+        } else if (osType == 1 && clientDeviceYear < currentYear) {
+            System.out.println("Установите облегченную версию приложения для Android по ссылке");
+        } else {
+            System.out.println("Вы можете установить обычное приложение");
+        }
+    }
+
+    public static int calculateDeliveryDays(int deliveryDistance) {
+        if (deliveryDistance <= 20) {
+            return 1; // Доставка в пределах 20 км занимает 1 день
+        } else if (deliveryDistance <= 60) {
+            return 2; // Доставка от 20 до 60 км занимает 2 дня
+        } else if (deliveryDistance <= 100) {
+            return 3; // Доставка от 60 до 100 км занимает 3 дня
+        } else {
+            return -1; // Доставка свыше 100 км невозможна
+        }
+    }
+
 }
