@@ -20,7 +20,7 @@ public class Main {
             System.out.println("Потребуется дней: " + deliveryDays);
         }
 
-        System.out.println("Задание 5 старое"); //   старое задание не удалял
+        System.out.println("Задание 5 старое"); //  старое задание не удалял
         byte monthNumber = 13;
         switch (monthNumber) {
             case 12, 1, 2:
