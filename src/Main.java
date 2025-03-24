@@ -64,11 +64,11 @@ public class Main {
 
     public static int calculateDeliveryDays(int deliveryDistance) {
         if (deliveryDistance <= 20) {
-            return 1; // Доставка в пределах 20 км занимает 1 день
+            return 1; // доставка в пределах 20 км занимает 1 день
         } else if (deliveryDistance <= 60) {
-            return 2; // Доставка от 20 до 60 км занимает 2 дня
+            return 2; // доставка от 20 до 60 км занимает 2 дня
         } else if (deliveryDistance <= 100) {
-            return 3; // Доставка от 60 до 100 км занимает 3 дня
+            return 3; // доставка от 60 до 100 км занимает 3 дня
         } else {
             return -1; // Доставка свыше 100 км невозможна
         }
